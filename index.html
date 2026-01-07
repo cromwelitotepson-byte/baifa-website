@@ -1,1361 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAIFA Association | Advancing Africa Through Bioinformatics & AI</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        :root {
-            --baifa-green: #2E7D32;
-            --baifa-gold: #D4AF37;
-            --baifa-blue: #1565C0;
-            --africa-red: #CE1126;
-            --africa-black: #000000;
-            --light-bg: #f8f9fa;
-            --dark-text: #212529;
-            --light-text: #f8f9fa;
-            --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            --transition: all 0.3s ease;
-            --border-radius: 12px;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Nunito', sans-serif;
-            color: var(--dark-text);
-            line-height: 1.6;
-            background-color: var(--light-bg);
-            overflow-x: hidden;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        section {
-            padding: 80px 0;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .section-header h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.8rem;
-            color: var(--baifa-green);
-            position: relative;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-        
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--baifa-gold);
-            border-radius: 2px;
-        }
-        
-        .section-header p {
-            font-size: 1.2rem;
-            color: #555;
-            margin-top: 20px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--baifa-gold);
-            color: var(--africa-black);
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
-            font-family: 'Poppins', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            border: 2px solid var(--baifa-gold);
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
-        }
-        
-        .btn:hover {
-            background: transparent;
-            color: var(--baifa-gold);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--baifa-gold);
-            border: 2px solid var(--baifa-gold);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--baifa-gold);
-            color: var(--africa-black);
-        }
-        
-        .btn-blue {
-            background: var(--baifa-blue);
-            color: white;
-            border: 2px solid var(--baifa-blue);
-        }
-        
-        .btn-blue:hover {
-            background: transparent;
-            color: var(--baifa-blue);
-        }
-        
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, rgba(30, 50, 80, 0.95), rgba(21, 101, 192, 0.9));
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
-        }
-        
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            font-size: 1.8rem;
-        }
-        
-        .logo-icon {
-            color: var(--baifa-gold);
-            font-size: 2.2rem;
-            position: relative;
-        }
-        
-        .logo-icon::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 2px;
-            width: 15px;
-            height: 3px;
-            background: var(--africa-red);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.05rem;
-            transition: var(--transition);
-            position: relative;
-            padding: 5px 0;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--baifa-gold);
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(15, 38, 77, 0.85), rgba(21, 101, 192, 0.85)), url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 180px 0 120px;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3.8rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 850px;
-            margin: 0 auto 2.5rem;
-            opacity: 0.95;
-            font-weight: 300;
-        }
-        
-        .highlight {
-            color: var(--baifa-gold);
-            font-weight: 700;
-        }
-        
-        .cta-container {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        /* Activity Cards */
-        .activities {
-            background-color: white;
-        }
-        
-        .activities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-        
-        .activity-card {
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition);
-            position: relative;
-            border: 1px solid #eee;
-        }
-        
-        .activity-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
-        }
-        
-        .card-header {
-            background: linear-gradient(135deg, var(--baifa-green), var(--baifa-blue));
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .card-icon {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            color: var(--baifa-gold);
-        }
-        
-        .card-header h3 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .card-number {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            width: 40px;
-            height: 40px;
-            background: var(--baifa-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--africa-black);
-            border: 3px solid white;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-        }
-        
-        .card-content {
-            padding: 25px;
-        }
-        
-        .card-content p {
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-        }
-        
-        .impact-stats {
-            display: flex;
-            justify-content: space-around;
-            margin: 25px 0;
-            text-align: center;
-        }
-        
-        .stat-item {
-            flex: 1;
-            padding: 10px;
-        }
-        
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--baifa-green);
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            font-size: 0.95rem;
-            color: #666;
-        }
-        
-        /* Ecosystem Section */
-        .ecosystem {
-            background: linear-gradient(135deg, #e8f5e9, #e3f2fd);
-        }
-        
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 50px auto 0;
-        }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: var(--baifa-green);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-            border-radius: 2px;
-        }
-        
-        .timeline-item {
-            position: relative;
-            width: 50%;
-            padding: 20px 40px;
-            box-sizing: border-box;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--baifa-gold);
-            border: 3px solid var(--baifa-green);
-            top: 30px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-        
-        .timeline-left {
-            left: 0;
-        }
-        
-        .timeline-right {
-            left: 50%;
-        }
-        
-        .timeline-left::after {
-            right: -10px;
-        }
-        
-        .timeline-right::after {
-            left: -10px;
-        }
-        
-        .timeline-content {
-            background: white;
-            padding: 25px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--card-shadow);
-            position: relative;
-        }
-        
-        .timeline-content h3 {
-            color: var(--baifa-blue);
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 0;
-            top: 25px;
-            border: 10px solid transparent;
-        }
-        
-        .timeline-left .timeline-content::before {
-            right: -20px;
-            border-left-color: white;
-        }
-        
-        .timeline-right .timeline-content::before {
-            left: -20px;
-            border-right-color: white;
-        }
-        
-        /* Gender Equality Section */
-        .inclusion {
-            background: white;
-        }
-        
-        .initiatives-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .initiative-card {
-            background: linear-gradient(135deg, #fff9e6, #fff);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            text-align: center;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition);
-            border: 1px solid #f0e6d2;
-        }
-        
-        .initiative-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
-        }
-        
-        .initiative-icon {
-            font-size: 3.5rem;
-            color: var(--baifa-gold);
-            margin-bottom: 20px;
-        }
-        
-        .initiative-card h3 {
-            font-size: 1.6rem;
-            color: var(--baifa-green);
-            margin-bottom: 15px;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        /* Partners Section */
-        .partners {
-            background: linear-gradient(135deg, #f5f7fa, #e4edf5);
-            text-align: center;
-        }
-        
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .partner-logo {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 150px;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition);
-            border: 1px solid #e0e6ef;
-        }
-        
-        .partner-logo:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-color: var(--baifa-gold);
-        }
-        
-        .partner-logo img {
-            max-width: 120px;
-            max-height: 80px;
-            object-fit: contain;
-        }
-        
-        /* Impact Section */
-        .impact {
-            background: linear-gradient(135deg, var(--baifa-green), var(--baifa-blue));
-            color: white;
-            text-align: center;
-        }
-        
-        .impact .section-header h2 {
-            color: white;
-        }
-        
-        .impact-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .impact-card {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(10px);
-            border-radius: var(--border-radius);
-            padding: 35px 25px;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .impact-card:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
-        }
-        
-        .impact-number {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--baifa-gold);
-            margin-bottom: 15px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .impact-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .impact-card p {
-            opacity: 0.9;
-            font-size: 1.1rem;
-        }
-        
-        /* Newsletter */
-        .newsletter {
-            background: linear-gradient(135deg, #1a237e, #283593);
-            color: white;
-            text-align: center;
-            padding: 70px 0;
-        }
-        
-        .newsletter h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .newsletter p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        .newsletter-form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            gap: 10px;
-        }
-        
-        .newsletter-form input {
-            flex: 1;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-        }
-        
-        .newsletter-form button {
-            background: var(--baifa-gold);
-            color: var(--africa-black);
-            border: none;
-            padding: 0 30px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .newsletter-form button:hover {
-            background: #c59e2a;
-        }
-        
-        /* Footer */
-        footer {
-            background: #0f264d;
-            color: white;
-            padding-top: 70px;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 40px;
-        }
-        
-        .footer-col h3 {
-            font-size: 1.6rem;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--baifa-gold);
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #bbdefb;
-            text-decoration: none;
-            transition: var(--transition);
-            display: block;
-            font-size: 1.05rem;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-        
-        .contact-info {
-            list-style: none;
-        }
-        
-        .contact-info li {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 18px;
-            font-size: 1.05rem;
-        }
-        
-        .contact-icon {
-            color: var(--baifa-gold);
-            font-size: 1.4rem;
-            min-width: 25px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            font-size: 1.4rem;
-            transition: var(--transition);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-        
-        .social-icon:hover {
-            background: var(--baifa-gold);
-            color: var(--africa-black);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding: 25px 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #bbdefb;
-            font-size: 1.05rem;
-            font-weight: 500;
-        }
-        
-        .flag {
-            display: inline-block;
-            width: 30px;
-            height: 20px;
-            background: linear-gradient(to bottom, 
-                var(--africa-red) 33%, 
-                var(--africa-black) 33%, var(--africa-black) 66%, 
-                var(--baifa-green) 66%);
-            margin-right: 8px;
-            vertical-align: middle;
-            border-radius: 2px;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item::after {
-                left: 21px;
-                top: 32px;
-            }
-            
-            .timeline-left, .timeline-right {
-                left: 0;
-            }
-            
-            .timeline-left .timeline-content::before,
-            .timeline-right .timeline-content::before {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                flex-direction: column;
-                background: rgba(15, 38, 77, 0.95);
-                width: 100%;
-                text-align: center;
-                transition: var(--transition);
-                padding: 30px 0;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.2);
-                gap: 25px;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero p {
-                font-size: 1.3rem;
-            }
-            
-            .cta-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                margin-bottom: 15px;
-            }
-            
-            section {
-                padding: 60px 0;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero {
-                padding: 150px 0 90px;
-            }
-            
-            .hero h1 {
-                font-size: 2.3rem;
-            }
-            
-            .section-header h2 {
-                font-size: 2.2rem;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-            }
-            
-            .impact-number {
-                font-size: 2.8rem;
-            }
-        }
-        
-        /* Animation Classes */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .fade-in.appear {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BAIFA | Free Bioinformatics & AI Courses for Africa</title>
+  <meta name="description" content="BAIFA offers free certified online training in bioinformatics and AI for young Africans — with video, audio, PDFs, and multilingual support." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/img/logo-baifa.png" />
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container navbar">
-            <div class="logo">
-                <i class="fas fa-dna logo-icon"></i>
-                <span>BAIFA</span>
-            </div>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav class="nav-links" id="nav-links">
-                <a href="#home">Home</a>
-                <a href="#activities">Our Activities</a>
-                <a href="#ecosystem">Innovation Ecosystem</a>
-                <a href="#inclusion">Gender Equality</a>
-                <a href="#partners">Partners</a>
-                <a href="#impact">Impact</a>
-                <a href="#contact">Contact</a>
-            </nav>
-            <div class="auth-buttons">
-                <a href="#" class="btn btn-secondary">Sign In</a>
-            </div>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>Advancing Africa Through <span class="highlight">Bioinformatics & AI</span></h1>
-            <p>BAIFA champions scientific excellence, innovation, and inclusive growth across Africa by empowering the next generation of scientists and entrepreneurs with cutting-edge digital skills.</p>
-            <div class="cta-container">
-                <a href="#activities" class="btn">Our Mission</a>
-                <a href="#contact" class="btn btn-secondary">Join Us</a>
-            </div>
-        </div>
-    </section>
+  <!-- 🌐 Language Toggle -->
+  <div class="lang-toggle">
+    <button onclick="setLang('en')">🇬🇧 EN</button>
+    <button onclick="setLang('fr')">🇫🇷 FR</button>
+    <button onclick="setLang('pt')">🇵🇹 PT</button>
+    <button id="dark-toggle" onclick="toggleDarkMode()">🌙</button>
+  </div>
 
-    <!-- Activities Section -->
-    <section class="activities" id="activities">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Core Activities</h2>
-                <p>BAIFA drives Africa's scientific and technological advancement through six strategic pillars of action</p>
-            </div>
-            <div class="activities-grid">
-                <!-- Activity 1 -->
-                <div class="activity-card fade-in">
-                    <div class="card-header">
-                        <div class="card-number">1</div>
-                        <div class="card-icon">
-                            <i class="fas fa-flask"></i>
-                        </div>
-                        <h3>Scientific Research & Innovation</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>BAIFA establishes research hubs across Africa focused on solving continent-specific challenges in healthcare, agriculture, and environmental sustainability through bioinformatics and AI.</p>
-                        <p>We fund high-impact research projects and create collaborative networks connecting African scientists with global experts.</p>
-                        <div class="impact-stats">
-                            <div class="stat-item">
-                                <div class="stat-number">42</div>
-                                <div class="stat-label">Active Research Projects</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">18</div>
-                                <div class="stat-label">Partner Institutions</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Activity 2 -->
-                <div class="activity-card fade-in">
-                    <div class="card-header">
-                        <div class="card-number">2</div>
-                        <div class="card-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3>Free Training Programs</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>BAIFA offers accessible online training in bioinformatics and AI through workshops, seminars, and certification programs designed specifically for young Africans.</p>
-                        <p>Our curriculum emphasizes practical skills with real-world applications, taught by leading African and international experts.</p>
-                        <div class="impact-stats">
-                            <div class="stat-item">
-                                <div class="stat-number">5,200+</div>
-                                <div class="stat-label">Trained Youth</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">100%</div>
-                                <div class="stat-label">Free Certifications</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Activity 3 -->
-                <div class="activity-card fade-in">
-                    <div class="card-header">
-                        <div class="card-number">3</div>
-                        <div class="card-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h3>Global Partnerships</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>BAIFA cultivates strategic partnerships with national and international organizations to facilitate knowledge transfer, technology sharing, and resource mobilization.</p>
-                        <p>Our collaborative framework ensures African ownership of solutions while leveraging global expertise and infrastructure.</p>
-                        <div class="impact-stats">
-                            <div class="stat-item">
-                                <div class="stat-number">35</div>
-                                <div class="stat-label">International Partners</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">24</div>
-                                <div class="stat-label">African Countries</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Activity 4 -->
-                <div class="activity-card fade-in">
-                    <div class="card-header">
-                        <div class="card-number">4</div>
-                        <div class="card-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h3>Entrepreneurship Development</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>BAIFA equips young Africans with entrepreneurial and leadership skills to transform scientific knowledge into viable solutions for local and global challenges.</p>
-                        <p>Our innovation bootcamps and mentorship programs help participants develop business acumen alongside technical expertise.</p>
-                        <div class="impact-stats">
-                            <div class="stat-item">
-                                <div class="stat-number">120</div>
-                                <div class="stat-label">Startups Launched</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">$3.8M</div>
-                                <div class="stat-label">Funding Secured</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Activity 5 -->
-                <div class="activity-card fade-in">
-                    <div class="card-header">
-                        <div class="card-number">5</div>
-                        <div class="card-icon">
-                            <i class="fas fa-sitemap"></i>
-                        </div>
-                        <h3>Startup Ecosystem</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>BAIFA creates a supportive ecosystem for science-based startups and small businesses across Africa through incubation programs, funding opportunities, and market access.</p>
-                        <p>Our hubs provide shared laboratory facilities, cloud computing resources, and mentorship from industry leaders.</p>
-                        <div class="impact-stats">
-                            <div class="stat-item">
-                                <div class="stat-number">8</div>
-                                <div class="stat-label">Innovation Hubs</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">450</div>
-                                <div class="stat-label">Jobs Created</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Activity 6 -->
-                <div class="activity-card fade-in">
-                    <div class="card-header">
-                        <div class="card-number">6</div>
-                        <div class="card-icon">
-                            <i class="fas fa-venus-mars"></i>
-                        </div>
-                        <h3>Gender Equality & Inclusion</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>BAIFA actively promotes gender equality and inclusivity in STEM fields, ensuring equitable participation of women and underrepresented groups in all programs.</p>
-                        <p>Our targeted initiatives address systemic barriers while fostering collaborative leadership among young African changemakers.</p>
-                        <div class="impact-stats">
-                            <div class="stat-item">
-                                <div class="stat-number">65%</div>
-                                <div class="stat-label">Women Participants</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">48</div>
-                                <div class="stat-label">Countries Represented</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- 🏆 Hero Section -->
+  <header class="hero">
+    <div class="container">
+      <img src="assets/img/logo-baifa.png" alt="BAIFA Logo" class="logo">
+      <h1 data-lang="hero-title">Advancing Africa Through Bioinformatics & AI</h1>
+      <p data-lang="hero-desc">
+        BAIFA champions scientific excellence, innovation, and inclusive growth across Africa by empowering the next generation of scientists and entrepreneurs with cutting-edge digital skills — <strong>100% free, with certification</strong>.
+      </p>
+      <div class="cta-buttons">
+        <a href="courses.html" class="btn primary" data-lang="explore-courses">Explore Free Courses</a>
+        <a href="apply.html" class="btn outline" data-lang="apply-now">Apply to Join</a>
+      </div>
+    </div>
+  </header>
 
-    <!-- Ecosystem Section -->
-    <section class="ecosystem" id="ecosystem">
-        <div class="container">
-            <div class="section-header">
-                <h2>Innovation Ecosystem</h2>
-                <p>BAIFA creates a self-sustaining ecosystem connecting research, education, entrepreneurship, and policy for maximum impact</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item timeline-left fade-in">
-                    <div class="timeline-content">
-                        <h3>Research & Discovery</h3>
-                        <p>BAIFA funds and coordinates cutting-edge research in African genomics, disease surveillance, precision agriculture, and environmental monitoring.</p>
-                        <p><strong>Example:</strong> Developing AI models to predict malaria outbreaks using climate and genomic data across West Africa.</p>
-                    </div>
-                </div>
-                <div class="timeline-item timeline-right fade-in">
-                    <div class="timeline-content">
-                        <h3>Skills Development</h3>
-                        <p>Our training programs convert research insights into practical skills through hands-on workshops, online courses, and certification pathways.</p>
-                        <p><strong>Example:</strong> 12-week intensive program in genomic data analysis with real pathogen sequencing data from African outbreaks.</p>
-                    </div>
-                </div>
-                <div class="timeline-item timeline-left fade-in">
-                    <div class="timeline-content">
-                        <h3>Entrepreneurship</h3>
-                        <p>BAIFA's incubation program helps scientists transform knowledge into viable businesses with mentorship, seed funding, and market access.</p>
-                        <p><strong>Example:</strong> Supporting startups developing AI-powered diagnostic tools for rural healthcare settings across East Africa.</p>
-                    </div>
-                </div>
-                <div class="timeline-item timeline-right fade-in">
-                    <div class="timeline-content">
-                        <h3>Policy & Scale</h3>
-                        <p>We work with governments and institutions to integrate innovations into national strategies and scale successful solutions continent-wide.</p>
-                        <p><strong>Example:</strong> Partnering with African Union to deploy drought prediction models for smallholder farmers across the Sahel region.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- 📊 Impact Stats -->
+  <section class="impact">
+    <div class="container">
+      <div class="stat-card"><span id="learners">3,482</span><br><small data-lang="certified-learners">Learners Certified</small></div>
+      <div class="stat-card"><span id="countries">18</span><br><small data-lang="countries">African Countries</small></div>
+      <div class="stat-card"><span id="courses">6</span><br><small data-lang="free-courses">Free Courses</small></div>
+      <div class="stat-card"><span>100%</span><br><small data-lang="free-access">Free Access</small></div>
+    </div>
+  </section>
 
-    <!-- Gender Equality Section -->
-    <section class="inclusion" id="inclusion">
-        <div class="container">
-            <div class="section-header">
-                <h2>Gender Equality & Inclusion</h2>
-                <p>BAIFA champions diversity as a driver of innovation, ensuring equitable participation and leadership opportunities for all Africans</p>
-            </div>
-            <div class="initiatives-grid">
-                <div class="initiative-card fade-in">
-                    <div class="initiative-icon">
-                        <i class="fas fa-female"></i>
-                    </div>
-                    <h3>Women in AI Initiative</h3>
-                    <p>Dedicated scholarships, mentorship networks, and safe learning spaces for women pursuing careers in bioinformatics and AI.</p>
-                </div>
-                <div class="initiative-card fade-in">
-                    <div class="initiative-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Rural Access Program</h3>
-                    <p>Mobile learning labs and offline resources ensure youth from remote communities can participate in BAIFA's training programs.</p>
-                </div>
-                <div class="initiative-card fade-in">
-                    <div class="initiative-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h3>Inclusive Leadership</h3>
-                    <p>Leadership development programs specifically designed for youth with disabilities and from conflict-affected regions.</p>
-                </div>
-                <div class="initiative-card fade-in">
-                    <div class="initiative-icon">
-                        <i class="fas fa-language"></i>
-                    </div>
-                    <h3>Multilingual Resources</h3>
-                    <p>Courses and materials available in English, French, Portuguese, Swahili, and Arabic to overcome language barriers.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- 🎯 Core Activities (6 Pillars) -->
+  <section class="pillars">
+    <div class="container">
+      <h2 data-lang="our-mission">Our Core Activities</h2>
+      <p data-lang="mission-desc">BAIFA drives Africa's scientific advancement through six strategic pillars:</p>
 
-    <!-- Partners Section -->
-    <section class="partners" id="partners">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Strategic Partners</h2>
-                <p>BAIFA collaborates with leading institutions to amplify impact across the African continent</p>
-            </div>
-            <div class="partners-grid">
-                <div class="partner-logo fade-in">
-                    <div style="font-weight:700; color:#1565C0; font-size:1.8rem;">H3ABioNet</div>
-                </div>
-                <div class="partner-logo fade-in">
-                    <div style="font-weight:700; color:#2E7D32; font-size:1.8rem;">AIMS</div>
-                </div>
-                <div class="partner-logo fade-in">
-                    <div style="font-weight:700; color:#D4AF37; font-size:1.8rem;">Wellcome Trust</div>
-                </div>
-                <div class="partner-logo fade-in">
-                    <div style="font-weight:700; color:#1565C0; font-size:1.8rem;">AWS</div>
-                </div>
-                <div class="partner-logo fade-in">
-                    <div style="font-weight:700; color:#2E7D32; font-size:1.8rem;">AUDA-NEPAD</div>
-                </div>
-                <div class="partner-logo fade-in">
-                    <div style="font-weight:700; color:#D4AF37; font-size:1.8rem;">Chan Zuckerberg</div>
-                </div>
-            </div>
+      <div class="grid-3">
+        <div class="pillar">
+          <i class="fas fa-flask"></i>
+          <h3 data-lang="pillar-1">Scientific Research & Innovation</h3>
+          <p data-lang="pillar-1-desc">Research hubs solving Africa-specific challenges in health, agriculture, and environment.</p>
         </div>
-    </section>
-
-    <!-- Impact Section -->
-    <section class="impact" id="impact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Continental Impact</h2>
-                <p>BAIFA's programs are transforming Africa's scientific landscape and creating opportunities for young innovators</p>
-            </div>
-            <div class="impact-cards">
-                <div class="impact-card fade-in">
-                    <div class="impact-number">18,500+</div>
-                    <h3>Young Africans Trained</h3>
-                    <p>With free certifications in bioinformatics and AI since 2023</p>
-                </div>
-                <div class="impact-card fade-in">
-                    <div class="impact-number">78%</div>
-                    <h3>Employment Rate</h3>
-                    <p>Of graduates employed in STEM fields within 6 months</p>
-                </div>
-                <div class="impact-card fade-in">
-                    <div class="impact-number">42</div>
-                    <h3>Research Publications</h3>
-                    <p>Co-authored by BAIFA researchers in international journals</p>
-                </div>
-                <div class="impact-card fade-in">
-                    <div class="impact-number">$12.5M</div>
-                    <h3>Research Funding</h3>
-                    <p>Secured for African-led scientific projects</p>
-                </div>
-            </div>
+        <div class="pillar">
+          <i class="fas fa-graduation-cap"></i>
+          <h3 data-lang="pillar-2">Free Training Programs</h3>
+          <p data-lang="pillar-2-desc">Online workshops, seminars & certifications for young Africans — with video, audio, and PDFs.</p>
         </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container">
-            <h2>Join the BAIFA Movement</h2>
-            <p>Subscribe to receive updates on training opportunities, research initiatives, and success stories from across Africa</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Your email address" required>
-                <button type="submit">Subscribe</button>
-            </form>
+        <div class="pillar">
+          <i class="fas fa-handshake"></i>
+          <h3 data-lang="pillar-3">Global Partnerships</h3>
+          <p data-lang="pillar-3-desc">Knowledge transfer with African ownership and global collaboration.</p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>BAIFA Association</h3>
-                    <p>Building Africa's scientific future through bioinformatics and artificial intelligence. Empowering the next generation of African innovators to solve the continent's greatest challenges.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#activities">Core Activities</a></li>
-                        <li><a href="#ecosystem">Innovation Ecosystem</a></li>
-                        <li><a href="#inclusion">Gender Equality Program</a></li>
-                        <li><a href="#">Free Training Portal</a></li>
-                        <li><a href="#">Startup Incubator</a></li>
-                        <li><a href="#">Research Publications</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Regional Hubs</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Kigali, Rwanda (HQ)</a></li>
-                        <li><a href="#">Cape Town, South Africa</a></li>
-                        <li><a href="#">Nairobi, Kenya</a></li>
-                        <li><a href="#">Lagos, Nigeria</a></li>
-                        <li><a href="#">Dakar, Senegal</a></li>
-                        <li><a href="#">Addis Ababa, Ethiopia</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Contact Us</h3>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-map-marker-alt contact-icon"></i>
-                            <span>BAIFA Headquarters, Kigali Innovation City, Rwanda</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope contact-icon"></i>
-                            <span>connect@baifa.africa</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone contact-icon"></i>
-                            <span>+250 788 XXX XXX</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-globe contact-icon"></i>
-                            <span>www.baifa.africa</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p><span class="flag"></span> &copy; 2026 BAIFA Association. All rights reserved. | <span class="flag"></span> Empowering African Scientists Since 2023</p>
-            </div>
+        <div class="pillar">
+          <i class="fas fa-lightbulb"></i>
+          <h3 data-lang="pillar-4">Entrepreneurship Development</h3>
+          <p data-lang="pillar-4-desc">Innovation bootcamps to turn science into solutions.</p>
         </div>
-    </footer>
+        <div class="pillar">
+          <i class="fas fa-building"></i>
+          <h3 data-lang="pillar-5">Startup Ecosystem</h3>
+          <p data-lang="pillar-5-desc">Incubation, cloud labs, funding, and market access for science startups.</p>
+        </div>
+        <div class="pillar">
+          <i class="fas fa-balance-scale"></i>
+          <h3 data-lang="pillar-6">Gender Equality & Inclusion</h3>
+          <p data-lang="pillar-6-desc">Women in AI, rural access, multilingual resources, inclusive leadership.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const navLinks = document.getElementById('nav-links');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = mobileMenuBtn.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(15, 38, 77, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'linear-gradient(135deg, rgba(30, 50, 80, 0.95), rgba(21, 101, 192, 0.9))';
-                header.style.backdropFilter = 'none';
-            }
-        });
-        
-        // Fade-in animation on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('appear');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-        
-        fadeElements.forEach(element => {
-            observer.observe(element);
-        });
-        
-        // Newsletter form submission
-        const newsletterForm = document.querySelector('.newsletter-form');
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            
-            // In a real implementation, this would connect to a backend service
-            alert(`Thank you for subscribing to BAIFA updates! We'll send important announcements to ${email}`);
-            this.reset();
-        });
-        
-        // Initialize impact charts (would be implemented with real data in production)
-        document.addEventListener('DOMContentLoaded', function() {
-            // This would be implemented with Chart.js in a full version
-            console.log('BAIFA platform loaded successfully');
-        });
-    </script>
+  <!-- 📚 Featured Courses -->
+  <section class="courses-preview">
+    <div class="container">
+      <h2 data-lang="featured-courses">Featured Free Courses</h2>
+      <div class="grid-2">
+        <div class="course-card">
+          <img src="assets/img/course-bioinf.jpg" alt="Bioinformatics 101">
+          <h3>Bioinformatics 101</h3>
+          <ul>
+            <li>🟢 5 Modules | 🕒 10 Hours</li>
+            <li>🎧 Audio + 📄 PDFs included</li>
+            <li>📜 Free Certificate</li>
+            <li>🌍 EN / FR / PT</li>
+          </ul>
+          <a href="courses/bioinformatics-101/" class="btn small">Start Learning →</a>
+        </div>
+        <div class="course-card">
+          <img src="assets/img/course-ai-health.jpg" alt="AI for Health in Africa">
+          <h3>AI for Health in Africa</h3>
+          <ul>
+            <li>🟢 4 Modules | 🕒 8 Hours</li>
+            <li>🏥 Real outbreak datasets</li>
+            <li>🎓 Final project + cert</li>
+            <li>📱 Low-bandwidth friendly</li>
+          </ul>
+          <a href="courses/ai-for-health-africa/" class="btn small">Start Learning →</a>
+        </div>
+      </div>
+      <center><a href="courses.html" class="btn outline">View All Courses</a></center>
+    </div>
+  </section>
+
+  <!-- 🌍 Inclusion Highlights -->
+  <section class="inclusion">
+    <div class="container">
+      <h2 data-lang="inclusion-title">Built for Every African Learner</h2>
+      <div class="grid-4">
+        <div><i class="fas fa-wifi"></i> <span data-lang="low-bandwidth">Low-bandwidth mode</span></div>
+        <div><i class="fas fa-volume-up"></i> <span data-lang="audio">Audio alternatives</span></div>
+        <div><i class="fas fa-language"></i> <span data-lang="multilingual">EN / FR / PT / Swahili / Arabic</span></div>
+        <div><i class="fas fa-wheelchair"></i> <span data-lang="accessible">WCAG 2.1 AA Accessible</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🤝 Partners -->
+  <section class="partners">
+    <div class="container">
+      <h2 data-lang="partners">Our Strategic Partners</h2>
+      <div class="partner-logos">
+        <!-- Replace with actual logos later -->
+        <div class="partner-placeholder">UNET</div>
+        <div class="partner-placeholder">Africa CDC</div>
+        <div class="partner-placeholder">Netlify</div>
+        <div class="partner-placeholder">GitHub</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📬 Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 BAIFA Association — Advancing Africa Through Bioinformatics & AI</p>
+      <p><a href="contact.html">Contact</a> • <a href="certificate-verify.html">Verify Certificate</a> • <a href="https://github.com/baifa-africa">Open Source</a></p>
+    </div>
+  </footer>
+
+  <!-- ✨ Scripts -->
+  <script src="assets/js/dark-mode.js"></script>
+  <script src="assets/css/translations.js"></script>
+  <script>
+    // Simple impact counter animation
+    window.addEventListener('load', () => {
+      animateValue('learners', 0, 3482, 2000);
+      animateValue('countries', 0, 18, 1500);
+      animateValue('courses', 0, 6, 1500);
+    });
+    function animateValue(id, start, end, duration) {
+      let range = end - start;
+      let current = start;
+      let increment = end > start ? 1 : -1;
+      let stepTime = Math.abs(Math.floor(duration / range));
+      let obj = document.getElementById(id);
+      let timer = setInterval(() => {
+        current += increment;
+        obj.textContent = current;
+        if (current == end) clearInterval(timer);
+      }, stepTime);
+    }
+  </script>
 </body>
 </html>
