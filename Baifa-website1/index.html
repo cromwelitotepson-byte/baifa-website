@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BAIFA | Free Bioinformatics & AI Courses for Africa</title>
+  <meta name="description" content="BAIFA offers free certified online training in bioinformatics and AI for young Africans — with video, audio, PDFs, and multilingual support." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/img/logo-baifa.png" />
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- 🌐 Language Toggle -->
+  <div class="lang-toggle">
+    <button onclick="setLang('en')">🇬🇧 EN</button>
+    <button onclick="setLang('fr')">🇫🇷 FR</button>
+    <button onclick="setLang('pt')">🇵🇹 PT</button>
+    <button id="dark-toggle" onclick="toggleDarkMode()">🌙</button>
+  </div>
+
+  <!-- 🏆 Hero Section -->
+  <header class="hero">
+    <div class="container">
+      <img src="assets/img/logo-baifa.png" alt="BAIFA Logo" class="logo">
+      <h1 data-lang="hero-title">Advancing Africa Through Bioinformatics & AI</h1>
+      <p data-lang="hero-desc">
+        BAIFA champions scientific excellence, innovation, and inclusive growth across Africa by empowering the next generation of scientists and entrepreneurs with cutting-edge digital skills — <strong>100% free, with certification</strong>.
+      </p>
+      <div class="cta-buttons">
+        <a href="courses.html" class="btn primary" data-lang="explore-courses">Explore Free Courses</a>
+        <a href="apply.html" class="btn outline" data-lang="apply-now">Apply to Join</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 📊 Impact Stats -->
+  <section class="impact">
+    <div class="container">
+      <div class="stat-card"><span id="learners">3,482</span><br><small data-lang="certified-learners">Learners Certified</small></div>
+      <div class="stat-card"><span id="countries">18</span><br><small data-lang="countries">African Countries</small></div>
+      <div class="stat-card"><span id="courses">6</span><br><small data-lang="free-courses">Free Courses</small></div>
+      <div class="stat-card"><span>100%</span><br><small data-lang="free-access">Free Access</small></div>
+    </div>
+  </section>
+
+  <!-- 🎯 Core Activities (6 Pillars) -->
+  <section class="pillars">
+    <div class="container">
+      <h2 data-lang="our-mission">Our Core Activities</h2>
+      <p data-lang="mission-desc">BAIFA drives Africa's scientific advancement through six strategic pillars:</p>
+
+      <div class="grid-3">
+        <div class="pillar">
+          <i class="fas fa-flask"></i>
+          <h3 data-lang="pillar-1">Scientific Research & Innovation</h3>
+          <p data-lang="pillar-1-desc">Research hubs solving Africa-specific challenges in health, agriculture, and environment.</p>
+        </div>
+        <div class="pillar">
+          <i class="fas fa-graduation-cap"></i>
+          <h3 data-lang="pillar-2">Free Training Programs</h3>
+          <p data-lang="pillar-2-desc">Online workshops, seminars & certifications for young Africans — with video, audio, and PDFs.</p>
+        </div>
+        <div class="pillar">
+          <i class="fas fa-handshake"></i>
+          <h3 data-lang="pillar-3">Global Partnerships</h3>
+          <p data-lang="pillar-3-desc">Knowledge transfer with African ownership and global collaboration.</p>
+        </div>
+        <div class="pillar">
+          <i class="fas fa-lightbulb"></i>
+          <h3 data-lang="pillar-4">Entrepreneurship Development</h3>
+          <p data-lang="pillar-4-desc">Innovation bootcamps to turn science into solutions.</p>
+        </div>
+        <div class="pillar">
+          <i class="fas fa-building"></i>
+          <h3 data-lang="pillar-5">Startup Ecosystem</h3>
+          <p data-lang="pillar-5-desc">Incubation, cloud labs, funding, and market access for science startups.</p>
+        </div>
+        <div class="pillar">
+          <i class="fas fa-balance-scale"></i>
+          <h3 data-lang="pillar-6">Gender Equality & Inclusion</h3>
+          <p data-lang="pillar-6-desc">Women in AI, rural access, multilingual resources, inclusive leadership.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📚 Featured Courses -->
+  <section class="courses-preview">
+    <div class="container">
+      <h2 data-lang="featured-courses">Featured Free Courses</h2>
+      <div class="grid-2">
+        <div class="course-card">
+          <img src="assets/img/course-bioinf.jpg" alt="Bioinformatics 101">
+          <h3>Bioinformatics 101</h3>
+          <ul>
+            <li>🟢 5 Modules | 🕒 10 Hours</li>
+            <li>🎧 Audio + 📄 PDFs included</li>
+            <li>📜 Free Certificate</li>
+            <li>🌍 EN / FR / PT</li>
+          </ul>
+          <a href="courses/bioinformatics-101/" class="btn small">Start Learning →</a>
+        </div>
+        <div class="course-card">
+          <img src="assets/img/course-ai-health.jpg" alt="AI for Health in Africa">
+          <h3>AI for Health in Africa</h3>
+          <ul>
+            <li>🟢 4 Modules | 🕒 8 Hours</li>
+            <li>🏥 Real outbreak datasets</li>
+            <li>🎓 Final project + cert</li>
+            <li>📱 Low-bandwidth friendly</li>
+          </ul>
+          <a href="courses/ai-for-health-africa/" class="btn small">Start Learning →</a>
+        </div>
+      </div>
+      <center><a href="courses.html" class="btn outline">View All Courses</a></center>
+    </div>
+  </section>
+
+  <!-- 🌍 Inclusion Highlights -->
+  <section class="inclusion">
+    <div class="container">
+      <h2 data-lang="inclusion-title">Built for Every African Learner</h2>
+      <div class="grid-4">
+        <div><i class="fas fa-wifi"></i> <span data-lang="low-bandwidth">Low-bandwidth mode</span></div>
+        <div><i class="fas fa-volume-up"></i> <span data-lang="audio">Audio alternatives</span></div>
+        <div><i class="fas fa-language"></i> <span data-lang="multilingual">EN / FR / PT / Swahili / Arabic</span></div>
+        <div><i class="fas fa-wheelchair"></i> <span data-lang="accessible">WCAG 2.1 AA Accessible</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🤝 Partners -->
+  <section class="partners">
+    <div class="container">
+      <h2 data-lang="partners">Our Strategic Partners</h2>
+      <div class="partner-logos">
+        <!-- Replace with actual logos later -->
+        <div class="partner-placeholder">UNET</div>
+        <div class="partner-placeholder">Africa CDC</div>
+        <div class="partner-placeholder">Netlify</div>
+        <div class="partner-placeholder">GitHub</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📬 Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 BAIFA Association — Advancing Africa Through Bioinformatics & AI</p>
+      <p><a href="contact.html">Contact</a> • <a href="certificate-verify.html">Verify Certificate</a> • <a href="https://github.com/baifa-africa">Open Source</a></p>
+    </div>
+  </footer>
+
+  <!-- ✨ Scripts -->
+  <script src="assets/js/dark-mode.js"></script>
+  <script src="assets/css/translations.js"></script>
+  <script>
+    // Simple impact counter animation
+    window.addEventListener('load', () => {
+      animateValue('learners', 0, 3482, 2000);
+      animateValue('countries', 0, 18, 1500);
+      animateValue('courses', 0, 6, 1500);
+    });
+    function animateValue(id, start, end, duration) {
+      let range = end - start;
+      let current = start;
+      let increment = end > start ? 1 : -1;
+      let stepTime = Math.abs(Math.floor(duration / range));
+      let obj = document.getElementById(id);
+      let timer = setInterval(() => {
+        current += increment;
+        obj.textContent = current;
+        if (current == end) clearInterval(timer);
+      }, stepTime);
+    }
+  </script>
+</body>
+</html>

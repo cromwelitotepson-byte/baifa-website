@@ -1,0 +1,15 @@
+// dark-mode.js
+function toggleDarkMode() {
+  const el = document.documentElement;
+  const isDark = el.getAttribute('data-theme') === 'dark';
+  el.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-toggle').textContent = isDark ? '🌙' : '☀️';
+  localStorage.setItem('baifa-theme', isDark ? 'light' : 'dark');
+}
+
+// On load
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('baifa-theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  document.getElementById('dark-toggle').textContent = saved === 'dark' ? '☀️' : '🌙';
+});

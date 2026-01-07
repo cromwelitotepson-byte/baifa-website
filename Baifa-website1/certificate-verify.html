@@ -1,0 +1,67 @@
+<!-- certificate-verify.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Verify BAIFA Certificate</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="container" style="padding: 4rem 0; text-align: center;">
+    <img src="assets/img/logo-baifa.png" alt="BAIFA" height="60">
+    <h1>Verify a BAIFA Certificate</h1>
+    <p>Enter the certificate ID (e.g., <code>BAIFA-CERT-ABCD1234</code>)</p>
+    
+    <input type="text" id="certId" placeholder="Certificate ID" style="padding:10px; font-size:1rem; width:300px; margin:1rem;">
+    <button onclick="verify()" class="btn primary">Verify</button>
+    
+    <div id="result" style="margin-top: 2rem; padding: 1rem; border-radius: 8px;"></div>
+
+    <p style="margin-top: 2rem;"><a href="/">← Back to Home</a></p>
+  </div>
+
+  <script>
+    function verify() {
+      const id = document.getElementById('certId').value.trim().toUpperCase();
+      const resultDiv = document.getElementById('result');
+      
+      // Mock database (replace later with Netlify Function + Google Sheet)
+      const validCerts = {
+        "BAIFA-CERT-ABCD1234": {
+          name: "Fatima Ndiaye",
+          course: "Bioinformatics 101",
+          date: "Jan 5, 2026",
+          status: "Verified"
+        },
+        "BAIFA-CERT-EFGH5678": {
+          name: "Kwame Osei",
+          course: "AI for Health in Africa",
+          date: "Dec 22, 2025",
+          status: "Verified"
+        }
+      };
+
+      if (validCerts[id]) {
+        const c = validCerts[id];
+        resultDiv.innerHTML = `
+          <div style="background:#dbeafe; color:#1e40af; border-left:4px solid #3b82f6;">
+            <h3>✅ Certificate Verified</h3>
+            <p><strong>Name:</strong> ${c.name}</p>
+            <p><strong>Course:</strong> ${c.course}</p>
+            <p><strong>Date:</strong> ${c.date}</p>
+            <p><em>This is an official BAIFA certification.</em></p>
+          </div>
+        `;
+      } else {
+        resultDiv.innerHTML = `
+          <div style="background:#fee2e2; color:#b91c1c; border-left:4px solid #ef4444;">
+            <h3>❌ Invalid Certificate</h3>
+            <p>The ID "${id}" was not found or has expired.</p>
+            <p>Contact <a href="mailto:certs@baifa.africa">certs@baifa.africa</a> for support.</p>
+          </div>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

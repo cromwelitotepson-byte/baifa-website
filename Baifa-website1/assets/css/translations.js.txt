@@ -1,0 +1,114 @@
+// translations.js
+const translations = {
+  en: {
+    "hero-title": "Advancing Africa Through Bioinformatics & AI",
+    "hero-desc": "BAIFA champions scientific excellence, innovation, and inclusive growth across Africa by empowering the next generation of scientists and entrepreneurs with cutting-edge digital skills — 100% free, with certification.",
+    "explore-courses": "Explore Free Courses",
+    "apply-now": "Apply to Join",
+    "certified-learners": "Learners Certified",
+    "countries": "African Countries",
+    "free-courses": "Free Courses",
+    "free-access": "Free Access",
+    "our-mission": "Our Core Activities",
+    "mission-desc": "BAIFA drives Africa's scientific advancement through six strategic pillars:",
+    "pillar-1": "Scientific Research & Innovation",
+    "pillar-1-desc": "Research hubs solving Africa-specific challenges in health, agriculture, and environment.",
+    "pillar-2": "Free Training Programs",
+    "pillar-2-desc": "Online workshops, seminars & certifications for young Africans — with video, audio, and PDFs.",
+    "pillar-3": "Global Partnerships",
+    "pillar-3-desc": "Knowledge transfer with African ownership and global collaboration.",
+    "pillar-4": "Entrepreneurship Development",
+    "pillar-4-desc": "Innovation bootcamps to turn science into solutions.",
+    "pillar-5": "Startup Ecosystem",
+    "pillar-5-desc": "Incubation, cloud labs, funding, and market access for science startups.",
+    "pillar-6": "Gender Equality & Inclusion",
+    "pillar-6-desc": "Women in AI, rural access, multilingual resources, inclusive leadership.",
+    "featured-courses": "Featured Free Courses",
+    "inclusion-title": "Built for Every African Learner",
+    "low-bandwidth": "Low-bandwidth mode",
+    "audio": "Audio alternatives",
+    "multilingual": "EN / FR / PT / Swahili / Arabic",
+    "accessible": "WCAG 2.1 AA Accessible",
+    "partners": "Our Strategic Partners"
+  },
+  fr: {
+    "hero-title": "Faire Avancer l'Afrique Grâce à la Bioinformatique et l'IA",
+    "hero-desc": "BAIFA promeut l'excellence scientifique, l'innovation et une croissance inclusive en Afrique en formant la prochaine génération de scientifiques et entrepreneurs — 100 % gratuit, avec certification.",
+    "explore-courses": "Découvrir les Cours",
+    "apply-now": "Postuler",
+    "certified-learners": "Apprenants Certifiés",
+    "countries": "Pays Africains",
+    "free-courses": "Cours Gratuits",
+    "free-access": "Accès Gratuit",
+    "our-mission": "Nos Activités Clés",
+    "mission-desc": "BAIFA œuvre pour l'avancement scientifique de l'Afrique via 6 piliers stratégiques :",
+    "pillar-1": "Recherche & Innovation",
+    "pillar-1-desc": "Centres de recherche pour les défis africains en santé, agriculture et environnement.",
+    "pillar-2": "Formations Gratuites",
+    "pillar-2-desc": "Ateliers, séminaires et certifications en ligne — vidéos, audios et PDF inclus.",
+    "pillar-3": "Partenariats Mondiaux",
+    "pillar-3-desc": "Transfert de connaissances avec appropriation africaine.",
+    "pillar-4": "Développement Entrepreneurial",
+    "pillar-4-desc": "Accélérateurs d'innovation pour transformer la science en solutions.",
+    "pillar-5": "Écosystème Startups",
+    "pillar-5-desc": "Incubation, labs, financement et accès au marché.",
+    "pillar-6": "Égalité & Inclusion",
+    "pillar-6-desc": "Femmes en IA, accès rural, ressources multilingues, leadership inclusif.",
+    "featured-courses": "Cours Recommandés",
+    "inclusion-title": "Conçu pour Tous les Africains",
+    "low-bandwidth": "Mode faible bande passante",
+    "audio": "Versions audio",
+    "multilingual": "FR / EN / PT / Swahili / Arabe",
+    "accessible": "Accessible (WCAG 2.1)",
+    "partners": "Nos Partenaires Stratégiques"
+  },
+  pt: {
+    "hero-title": "Avançando a África com Bioinformática e IA",
+    "hero-desc": "A BAIFA promove excelência científica, inovação e crescimento inclusivo na África, capacitando a próxima geração de cientistas e empreendedores — 100% gratuito, com certificação.",
+    "explore-courses": "Explorar Cursos",
+    "apply-now": "Inscreva-se",
+    "certified-learners": "Aprendizes Certificados",
+    "countries": "Países Africanos",
+    "free-courses": "Cursos Gratuitos",
+    "free-access": "Acesso Gratuito",
+    "our-mission": "Nossas Atividades Principais",
+    "mission-desc": "A BAIFA impulsiona o avanço científico da África por meio de 6 pilares estratégicos:",
+    "pillar-1": "Pesquisa & Inovação",
+    "pillar-1-desc": "Centros de pesquisa para desafios africanos em saúde, agricultura e meio ambiente.",
+    "pillar-2": "Programas de Formação Gratuitos",
+    "pillar-2-desc": "Workshops, seminários e certificações online — com vídeos, áudios e PDFs.",
+    "pillar-3": "Parcerias Globais",
+    "pillar-3-desc": "Transferência de conhecimento com propriedade africana.",
+    "pillar-4": "Desenvolvimento Empreendedor",
+    "pillar-4-desc": "Bootcamps para transformar ciência em soluções.",
+    "pillar-5": "Ecossistema de Startups",
+    "pillar-5-desc": "Incubação, laboratórios, financiamento e acesso ao mercado.",
+    "pillar-6": "Igualdade de Gênero & Inclusão",
+    "pillar-6-desc": "Mulheres em IA, acesso rural, recursos multilíngues, liderança inclusiva.",
+    "featured-courses": "Cursos em Destaque",
+    "inclusion-title": "Criado para Todo Jovem Africano",
+    "low-bandwidth": "Modo baixa largura de banda",
+    "audio": "Alternativas em áudio",
+    "multilingual": "PT / EN / FR / Swahili / Árabe",
+    "accessible": "Acessível (WCAG 2.1)",
+    "partners": "Nossos Parceiros Estratégicos"
+  }
+};
+
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    const key = el.dataset.lang;
+    if (translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+  // Save preference
+  localStorage.setItem('baifa-lang', lang);
+}
+
+// On load
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('baifa-lang') || 'en';
+  setLang(saved);
+});

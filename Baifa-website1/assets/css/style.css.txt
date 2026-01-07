@@ -1,0 +1,113 @@
+/* style.css */
+:root {
+  --primary: #2563eb;
+  --secondary: #0d9488;
+  --light: #f8fafc;
+  --dark: #0f172a;
+  --gray: #64748b;
+  --success: #10b981;
+}
+
+[data-theme="dark"] {
+  --light: #0f172a;
+  --dark: #f8fafc;
+  --gray: #94a3b8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.6;
+  color: var(--dark);
+  background: var(--light);
+  transition: background 0.3s;
+}
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.btn.primary { background: var(--primary); color: white; }
+.btn.primary:hover { background: #1d4ed8; }
+.btn.outline {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+.btn.small { padding: 8px 16px; font-size: 0.9rem; }
+
+/* Language Toggle */
+.lang-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+}
+.lang-toggle button {
+  background: var(--light);
+  border: 1px solid #ddd;
+  padding: 4px 8px;
+  margin-left: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #dbeafe, #ecfeff);
+}
+.hero .logo { height: 80px; margin-bottom: 1rem; }
+.hero h1 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  color: var(--dark);
+}
+.hero p { font-size: 1.2rem; max-width: 800px; margin: 1rem auto; }
+
+/* Stats */
+.impact {
+  padding: 2rem 0;
+  background: white;
+}
+.stat-card {
+  text-align: center;
+  padding: 1rem;
+}
+.stat-card span {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary);
+}
+.stat-card small { color: var(--gray); }
+
+/* Pillars */
+.pillars { padding: 4rem 0; }
+.pillars h2 { text-align: center; font-size: 2rem; margin-bottom: 1rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.pillar { text-align: center; padding: 1.5rem; }
+.pillar i { font-size: 2rem; color: var(--secondary); margin-bottom: 1rem; }
+
+/* Courses */
+.courses-preview { padding: 4rem 0; background: #f1f5f9; }
+.course-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.course-card img { width: 100%; height: 180px; object-fit: cover; }
+.course-card h3 { padding: 1rem; }
+.course-card ul { padding: 0 1rem 1rem; list-style: none; }
+.course-card li { margin: 0.3rem 0; color: var(--gray); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 1.8rem; }
+  .grid-3, .grid-2, .grid-4 { grid-template-columns: 1fr; }
+  .lang-toggle { position: static; text-align: center; margin: 1rem; }
+}
